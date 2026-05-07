@@ -12,7 +12,7 @@ import WorksPage from './pages/WorksPage'
 
 function AppLayout() {
   return (
-    <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col border-x border-zinc-800 bg-zinc-950">
+    <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col border-x border-zinc-200 bg-white text-zinc-900">
       <Header />
       <NavBar />
       <main className="flex-1 px-4 py-6 md:px-8 md:py-10">

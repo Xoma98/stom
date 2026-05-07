@@ -9,9 +9,9 @@ function normalizeMarkdown(text) {
 export default function MarkdownPage({ title, markdown }) {
   return (
     <section className="space-y-6">
-      <h1 className="text-3xl font-semibold text-zinc-100 md:text-4xl">{title}</h1>
+      <h1 className="text-3xl font-semibold text-zinc-900 md:text-4xl">{title}</h1>
       <Card>
-        <CardContent className="prose prose-invert max-w-none pt-2 prose-headings:text-zinc-100 prose-a:text-yellow-300 prose-strong:text-zinc-100">
+        <CardContent className="prose max-w-none pt-2 prose-headings:text-zinc-900 prose-a:text-[#005580] prose-strong:text-zinc-900">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
             {normalizeMarkdown(markdown)}
           </ReactMarkdown>

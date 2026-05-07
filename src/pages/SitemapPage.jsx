@@ -13,7 +13,7 @@ const links = [
 export default function SitemapPage() {
   return (
     <section className="space-y-6">
-      <h1 className="text-3xl font-semibold text-zinc-100 md:text-4xl">Карта сайта</h1>
+      <h1 className="text-3xl font-semibold text-zinc-900 md:text-4xl">Карта сайта</h1>
       <Card>
         <CardHeader>
           <CardTitle>Разделы сайта</CardTitle>
@@ -22,7 +22,7 @@ export default function SitemapPage() {
           <ul className="space-y-2">
             {links.map((link) => (
               <li key={link.href}>
-                <Link className="text-zinc-200 hover:text-yellow-300" to={link.href}>
+                <Link className="text-zinc-700 hover:text-[#f89406]" to={link.href}>
                   {link.label}
                 </Link>
               </li>

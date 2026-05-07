@@ -34,14 +34,14 @@ export default function WorksPage() {
 
   return (
     <section className="space-y-6">
-      <h1 className="text-3xl font-semibold text-zinc-100 md:text-4xl">Примеры проектов</h1>
+      <h1 className="text-3xl font-semibold text-zinc-900 md:text-4xl">Примеры проектов</h1>
       {worksData.map((block, blockIndex) => (
         <Card key={block.title}>
           <CardHeader>
             <CardTitle>{block.title}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p className="text-zinc-300">{block.description}</p>
+            <p className="text-zinc-600">{block.description}</p>
             {block.images.length > 0 && (
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {block.images.map((path, imageIndex) => {
@@ -51,7 +51,7 @@ export default function WorksPage() {
                       type="button"
                       key={path}
                       onClick={() => openImage(blockIndex, imageIndex)}
-                      className="group relative overflow-hidden rounded-lg border border-zinc-800"
+                      className="group relative overflow-hidden rounded-lg border border-zinc-200 bg-white"
                     >
                       <img
                         src={src}
@@ -91,7 +91,7 @@ export default function WorksPage() {
               type="button"
               onClick={goPrev}
               disabled={fullscreen.imageIndex === 0}
-              className="absolute left-3 top-1/2 rounded-full bg-zinc-900/80 p-2 text-zinc-100 disabled:opacity-40"
+              className="absolute left-3 top-1/2 rounded-full bg-white/70 p-2 text-zinc-900 disabled:opacity-40"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -99,7 +99,7 @@ export default function WorksPage() {
               type="button"
               onClick={goNext}
               disabled={fullscreen.imageIndex === currentBlock.images.length - 1}
-              className="absolute right-3 top-1/2 rounded-full bg-zinc-900/80 p-2 text-zinc-100 disabled:opacity-40"
+              className="absolute right-3 top-1/2 rounded-full bg-white/70 p-2 text-zinc-900 disabled:opacity-40"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
