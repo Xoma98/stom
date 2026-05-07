@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#171717"/>
+  <rect x="120" y="130" width="400" height="520" rx="24" fill="#27272a"/>
+  <rect x="560" y="180" width="520" height="420" rx="28" fill="#3f3f46"/>
+  <circle cx="860" cy="390" r="92" fill="#facc15"/>
+  <text x="120" y="95" fill="#f4f4f5" font-size="48" font-family="Arial">018=5B: CAB0=>2:0</text>
+</svg>
