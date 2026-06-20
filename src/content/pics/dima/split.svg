@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" fill="none">
+  <rect width="320" height="240" rx="16" fill="#FFF1F2"/>
+  <!-- table -->
+  <rect x="20" y="150" width="280" height="12" rx="4" fill="#92400E"/>
+  <!-- salad small -->
+  <ellipse cx="80" cy="130" rx="35" ry="25" fill="#86EFAC"/>
+  <text x="80" y="135" text-anchor="middle" font-size="10" fill="#166534" font-family="Arial">A0;0B</text>
+  <text x="80" y="195" text-anchor="middle" font-size="11" fill="#6B7280" font-family="Arial">290½</text>
+  <!-- steak huge -->
+  <ellipse cx="220" cy="115" rx="55" ry="40" fill="#B91C1C"/>
+  <ellipse cx="220" cy="110" rx="40" ry="25" fill="#DC2626"/>
+  <text x="220" y="120" text-anchor="middle" font-size="10" fill="white" font-family="Arial">AB59:</text>
+  <text x="220" y="195" text-anchor="middle" font-size="11" fill="#6B7280" font-family="Arial">3490½</text>
+  <!-- split arrow -->
+  <text x="160" y="100" text-anchor="middle" font-size="24">–</text>
+  <text x="160" y="225" text-anchor="middle" font-size="12" fill="#BE123C" font-family="Arial">«?>?>;0< 65!»</text>
+</svg>

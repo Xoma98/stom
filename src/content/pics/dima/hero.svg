@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" fill="none">
+  <rect width="400" height="320" rx="24" fill="#FFF7ED"/>
+  <!-- fox ears -->
+  <path d="M120 80 L100 20 L160 60 Z" fill="#EA580C"/>
+  <path d="M280 80 L300 20 L240 60 Z" fill="#EA580C"/>
+  <path d="M125 75 L108 35 L150 62 Z" fill="#FDBA74"/>
+  <path d="M275 75 L292 35 L250 62 Z" fill="#FDBA74"/>
+  <!-- dog snout hybrid face -->
+  <ellipse cx="200" cy="160" rx="110" ry="95" fill="#F97316"/>
+  <ellipse cx="200" cy="175" rx="55" ry="40" fill="#FED7AA"/>
+  <ellipse cx="200" cy="185" rx="22" ry="16" fill="#1C1917"/>
+  <circle cx="160" cy="145" r="12" fill="#1C1917"/>
+  <circle cx="240" cy="145" r="12" fill="#1C1917"/>
+  <circle cx="163" cy="142" r="4" fill="white"/>
+  <circle cx="243" cy="142" r="4" fill="white"/>
+  <!-- sly smile -->
+  <path d="M170 200 Q200 230 230 200" stroke="#1C1917" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- bushy tail -->
+  <path d="M300 200 Q360 160 370 120 Q380 180 340 220 Q310 240 300 200" fill="#EA580C"/>
+  <!-- villain cape -->
+  <path d="M130 240 Q200 280 270 240 L290 310 L110 310 Z" fill="#7F1D1D"/>
+  <text x="200" y="300" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#FEF2F2">!--!</text>
+</svg>

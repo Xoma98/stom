@@ -1,208 +1,138 @@
-import { Link } from 'react-router-dom'
-import { badgesData } from '../content/badgesData'
-import { homeData } from '../content/homeData'
-import { leadFormData } from '../content/leadFormData'
-import { reviewsData } from '../content/reviewsData'
-import { servicesHomeData } from '../content/servicesHomeData'
-import { teamData } from '../content/teamData'
-import LeadForm from '../components/forms/LeadForm'
+import { dimaData } from '../content/dimaData'
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { Button } from '../components/ui/button'
 
+const severityColors = {
+  тяжкое: 'bg-red-100 text-red-800 border-red-200',
+  'особо коварное': 'bg-purple-100 text-purple-800 border-purple-200',
+  'бытовое злодейство': 'bg-amber-100 text-amber-800 border-amber-200',
+  экономическое: 'bg-orange-100 text-orange-800 border-orange-200',
+  хроническое: 'bg-blue-100 text-blue-800 border-blue-200',
+  'особо циничное': 'bg-rose-100 text-rose-800 border-rose-200',
+}
+
 export default function HomePage() {
+  const { hero, intro, charges, verdict } = dimaData
+
   return (
-    <section className="space-y-10 pb-6">
+    <div className="space-y-16 pb-10">
       {/* Hero */}
-      <div className="grid gap-6 md:grid-cols-2 md:items-start">
-        <div className="space-y-4">
-          <div className="inline-flex items-center rounded-full border border-[#005580]/20 bg-[#005580]/5 px-4 py-2 text-xs font-semibold text-[#005580]">
-            {homeData.hero.badge}
+      <section id="hero" className="grid items-center gap-8 md:grid-cols-2">
+        <div className="space-y-5">
+          <div className="inline-flex items-center rounded-full border border-orange-300 bg-orange-50 px-4 py-2 text-xs font-bold tracking-wide text-orange-700">
+            {hero.badge}
           </div>
-          <h1 className="text-4xl font-semibold leading-tight text-zinc-900 md:text-5xl">
-            {homeData.hero.title}
+          <h1 className="text-4xl font-black leading-tight text-zinc-900 md:text-5xl lg:text-6xl">
+            {hero.title}
           </h1>
-          <p className="max-w-xl text-lg text-zinc-700">{homeData.hero.description}</p>
-          <div className="flex flex-wrap items-center gap-3">
-            <Link
-              to={homeData.hero.ctaPrimary.href}
-              className="inline-flex items-center justify-center rounded-md bg-[#f89406] px-5 py-2.5 text-sm font-semibold text-zinc-950 hover:bg-[#c67605]"
-            >
-              {homeData.hero.ctaPrimary.text}
-            </Link>
-            <Link
-              to={homeData.hero.ctaSecondary.href}
-              className="inline-flex items-center justify-center rounded-md border border-zinc-300 px-5 py-2.5 text-sm font-semibold text-zinc-800 hover:bg-zinc-50"
-            >
-              {homeData.hero.ctaSecondary.text}
-            </Link>
+          <p className="text-xl font-semibold text-orange-600">{hero.subtitle}</p>
+          <p className="max-w-xl text-lg text-zinc-600">{hero.description}</p>
+          <div className="flex flex-wrap gap-3">
+            <a href="#charges">
+              <Button className="bg-orange-500 hover:bg-orange-600">Читать обвинения</Button>
+            </a>
+            <a href="#verdict">
+              <Button variant="outline">Вынести вердикт</Button>
+            </a>
+          </div>
+          <div className="flex flex-wrap gap-6 pt-2">
+            {hero.stats.map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="text-3xl font-black text-orange-500">{stat.value}</div>
+                <div className="text-xs font-medium uppercase tracking-wider text-zinc-500">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-[#005580]">Бесплатная консультация</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-zinc-700">
-              Оставьте контакт — мы перезвоним и подберем решение под ваши задачи.
-            </div>
-            <div className="mt-5">
-              <LeadForm
-                title={leadFormData.title}
-                subtitle="Консультация специалиста бесплатно"
-                compact
-              />
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Services */}
-      <div className="space-y-4">
-        <div className="flex items-end justify-between gap-4">
-          <h2 className="text-3xl font-semibold text-zinc-900 md:text-4xl">Наши услуги</h2>
+        <div className="relative">
+          <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-orange-200 to-amber-100 opacity-60 blur-2xl" />
+          <img
+            src={hero.image}
+            alt="Дмитрий — Пёс-Да-Лис"
+            className="relative w-full rounded-2xl border-4 border-orange-300 shadow-xl"
+          />
         </div>
-        <div className="grid gap-4 md:grid-cols-2">
-          {servicesHomeData.map((service) => (
-            <Card key={service.title}>
+      </section>
+
+      {/* Intro */}
+      <section id="about" className="rounded-2xl border-2 border-dashed border-orange-300 bg-orange-50/50 p-6 md:p-8">
+        <h2 className="mb-3 text-2xl font-bold text-zinc-900 md:text-3xl">
+          Почему Дима — негодяй?
+        </h2>
+        <p className="text-lg leading-relaxed text-zinc-700">{intro}</p>
+      </section>
+
+      {/* Charges */}
+      <section id="charges" className="space-y-6">
+        <div className="text-center">
+          <h2 className="text-3xl font-black text-zinc-900 md:text-4xl">
+            Список обвинений
+          </h2>
+          <p className="mt-2 text-zinc-600">
+            Каждый пункт проверен на практике. Смешно — да. Неправда — нет.
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          {charges.map((charge, index) => (
+            <Card
+              key={charge.id}
+              className="overflow-hidden border-orange-100 transition-shadow hover:shadow-lg hover:shadow-orange-100"
+            >
+              <div className="relative">
+                <img
+                  src={charge.image}
+                  alt={charge.title}
+                  className={`h-48 w-full object-cover ${charge.id === 'gps' ? 'object-top' : ''}`}
+                />
+                <div className="absolute left-4 top-4 flex items-center gap-2">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-lg shadow">
+                    {charge.emoji}
+                  </span>
+                  <span className="rounded-full bg-white/90 px-2 py-1 text-xs font-bold text-zinc-600 shadow">
+                    #{index + 1}
+                  </span>
+                </div>
+              </div>
               <CardHeader>
-                <CardTitle>{service.title}</CardTitle>
+                <div className="flex flex-wrap items-center gap-2">
+                  <CardTitle className="text-orange-700">{charge.title}</CardTitle>
+                  <span
+                    className={`rounded-full border px-2 py-0.5 text-xs font-semibold ${severityColors[charge.severity]}`}
+                  >
+                    {charge.severity}
+                  </span>
+                </div>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-zinc-700">{service.description}</p>
-                <div className="text-sm text-zinc-600">
-                  Цена: <span className="font-semibold text-[#f89406]">{service.priceFrom}</span>
-                </div>
-                <ul className="space-y-1 text-sm text-zinc-600">
-                  {service.highlights.map((h) => (
-                    <li key={h}>• {h}</li>
-                  ))}
-                </ul>
-
-                <div className="flex flex-wrap gap-2 pt-1">
-                  <Button variant="outline" className="flex-1 min-w-[140px] sm:flex-none">
-                    Узнать подробнее
-                  </Button>
-                  <Button className="flex-1 min-w-[140px] sm:flex-none">Записаться</Button>
-                </div>
-
-                <div className="pt-1 text-sm font-medium text-zinc-900">
-                  Оставьте свой контакт — свяжемся в ближайшее рабочее время
-                </div>
-                <LeadForm title="Оставьте контакт" subtitle="" compact showConsent />
+              <CardContent className="space-y-3">
+                <p className="text-zinc-700">{charge.argument}</p>
+                <blockquote className="border-l-4 border-orange-400 bg-orange-50 px-4 py-2 text-sm italic text-zinc-600">
+                  {charge.evidence}
+                </blockquote>
               </CardContent>
             </Card>
           ))}
         </div>
-      </div>
+      </section>
 
-      {/* Price list / consultation */}
-      <Card>
-        <CardContent className="space-y-4 py-2">
-          <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-            <div>
-              <div className="text-sm font-semibold tracking-wide text-[#005580]">
-                {leadFormData.title}
-              </div>
-              <div className="mt-1 text-lg font-semibold text-zinc-900">
-                {leadFormData.subtitle}
-              </div>
-            </div>
-            <div className="hidden md:block text-zinc-600">
-              Прайс-лист + подбор оборудования под ваш бюджет
-            </div>
-          </div>
-          <LeadForm title="Прайс-лист" subtitle="Консультация специалиста бесплатно" compact={false} />
-        </CardContent>
-      </Card>
-
-      {/* Team */}
-      <div className="space-y-4">
-        <h2 className="text-3xl font-semibold text-zinc-900 md:text-4xl">Врачи клиники</h2>
-        <div className="text-zinc-700">
-          Все наши специалисты проходят обучение и поддерживают уровень компетенций, чтобы проекты
-          выполнялись точно в срок и с правильной комплектацией.
-        </div>
-        <div className="grid gap-4 md:grid-cols-2">
-          {teamData.map((member) => (
-            <Card key={member.name}>
-              <CardHeader>
-                <CardTitle className="text-zinc-900">{member.name}</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                <div className="text-[#005580] text-sm font-semibold">{member.role}</div>
-                <div className="text-zinc-600 text-sm">{member.experience}</div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-
-      {/* Badges */}
-      <div className="grid gap-4 md:grid-cols-3">
-        {badgesData.map((b) => (
-          <Card key={b.title}>
-            <CardHeader>
-              <CardTitle>{b.title}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-zinc-700">{b.description}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
-      {/* Reviews */}
-      <div className="space-y-4">
-        <h2 className="text-3xl font-semibold text-zinc-900 md:text-4xl">{reviewsData.title}</h2>
-        <Card>
-          <CardContent className="space-y-3 py-2">
-            <div className="text-zinc-700">
-              Почитать отзывы и посмотреть расположение — перейдите на карту.
-            </div>
-            <a
-              className="inline-flex items-center gap-2 text-[#005580] hover:text-[#f89406]"
-              href={reviewsData.mapHref}
-              target="_blank"
-              rel="noreferrer"
+      {/* Verdict */}
+      <section id="verdict">
+        <Card className="border-2 border-orange-400 bg-gradient-to-br from-orange-50 to-amber-50 text-center">
+          <CardContent className="space-y-4 py-8">
+            <div className="text-5xl">⚖️</div>
+            <h2 className="text-3xl font-black text-zinc-900">{verdict.title}</h2>
+            <p className="mx-auto max-w-2xl text-lg text-zinc-700">{verdict.text}</p>
+            <Button
+              className="mt-2 bg-red-600 hover:bg-red-700"
+              onClick={() => alert('Петиция принята! Дима уведомлён. (нет)')}
             >
-              {reviewsData.mapLabel}
-              <span className="text-zinc-400">↗</span>
-            </a>
+              {verdict.cta}
+            </Button>
           </CardContent>
         </Card>
-      </div>
-
-      {/* Questions */}
-      <div className="grid gap-4 md:grid-cols-2 md:items-start">
-        <div className="space-y-3">
-          <h2 className="text-3xl font-semibold text-zinc-900 md:text-4xl">Остались вопросы?</h2>
-          <div className="text-zinc-700">
-            Найти нас на карте и получить ответы на вопросы можно прямо сейчас.
-          </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <a
-              href={reviewsData.mapHref}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-md border border-zinc-300 bg-transparent px-4 py-2 text-sm font-semibold text-zinc-800 hover:bg-zinc-50"
-            >
-              {reviewsData.mapLabel}
-            </a>
-            <Link
-              to="/prices"
-              className="inline-flex items-center justify-center rounded-md bg-[#f89406] px-4 py-2 text-sm font-semibold text-zinc-950 hover:bg-[#c67605]"
-            >
-              Узнать цены
-            </Link>
-          </div>
-        </div>
-        <Card>
-          <CardContent className="pt-2">
-            <LeadForm title="Быстрая связь" subtitle="Оставьте контакт — перезвоним" compact />
-          </CardContent>
-        </Card>
-      </div>
-    </section>
+      </section>
+    </div>
   )
 }
